@@ -7,7 +7,7 @@ services:
       - 80:80
     volumes:
       - ./config/php.conf.ini/php.ini:/usr/local/etc/php/php.ini
-      - ./wordpress:/var/www/html 
+      - ./wordpress:/var/www/html:rw 
     environment:
       WORDPRESS_DB_HOST: db
       WORDPRESS_DB_NAME: raccoon_wordpress 

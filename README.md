@@ -45,7 +45,7 @@ comandos úteis
 
 ```
 docker-compose run --rm wpcli bash 
-docker-compose run --user root --rm wpcli bash 
+docker-compose run --user XFS --rm wpcli bash 
 
 wp core install --url=localhost --title='Raccoon Boilerplate' --admin_user=admin --admin_password=admin --admin_email=fakeadmin@fakehost.fk
 wp theme activate raccoon-theme 
