@@ -1,0 +1,8 @@
+node_modules/
+deploy.db
+public/
+wordpress/wp-admin
+wordpress/includes
+
+
+*.txt
