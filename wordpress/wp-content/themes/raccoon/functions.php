@@ -121,4 +121,3 @@ function hotsite_remove_slug( $post_link, $post ) {
 add_filter( 'post_type_link', 'hotsite_remove_slug', 10, 2 );
 
 ?>
-
