@@ -6,7 +6,7 @@ services:
     ports:
       - 80:80
     volumes:
-      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
+      - ./config/php.conf.ini/php.ini:/usr/local/etc/php/php.ini
       - ./wordpress:/var/www/html 
     environment:
       WORDPRESS_DB_HOST: db
@@ -20,13 +20,12 @@ services:
 
   wpcli:
     image: wordpress:cli
-    volumes:
-      - ./config/php.conf.ini:/usr/local/etc/php/conf.d/conf.ini
+    volumes:      
+      - ./config/php.conf.ini/php.ini:/usr/local/etc/php/php.ini
       - ./wordpress:/var/www/html
     depends_on:
       - db
       - wp
-
   pma:
     image: phpmyadmin/phpmyadmin
     environment:
