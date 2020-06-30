@@ -15,5 +15,6 @@ configure:
 	wp option update siteurl http://localhost	
 	wp rewrite structure '/%postname%/'
 	wp theme activate raccoon		
-	wp plugin uninstall akismet hello	
+	wp plugin uninstall akismet hello
 	wp plugin activate --all 
+		

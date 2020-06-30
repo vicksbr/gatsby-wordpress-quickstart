@@ -8,7 +8,8 @@ services:
     entrypoint: sh -c "/wait && make -f /scripts/Makefile"
     volumes:      
       - ./config/php.conf.ini/php.ini:/usr/local/etc/php/php.ini
-      - ./wordpress:/var/www/html            
+      - ./wordpress:/var/www/html
+      - ./docker/raccoon_boilerplate.xml:/var/www/html/raccoon_boilerplate.xml           
     environment:
       - WP_CLI_CACHE_DIR=/var/www/html/wpcli/.cache/
       - WP_CLI_PACKAGES_DIR=/var/www/html/wpcli/packages
@@ -18,6 +19,18 @@ services:
       - WAIT_HOSTS_TIMEOUT=${WAIT_HOSTS_TIMEOUT:-300}
       - WAIT_SLEEP_INTERVAL=${WAIT_SLEEP_INTERVAL:-30}
       - WAIT_HOST_CONNECT_TIMEOUT=${WAIT_HOST_CONNECT_TIMEOUT:-30}
+      - WORDPRESS_LOCALE=${WORDPRESS_LOCALE:-en_US}
+      - WORDPRESS_DB_NAME=${COMPOSE_PROJECT_NAME:-wordpress}
+      - WORDPRESS_DB_HOST=${WORDPRESS_DB_HOST:-mysql}
+      - WORDPRESS_DB_USER=${DATABASE_USER:-root}
+      - WORDPRESS_DB_PASSWORD=${DATABASE_PASSWORD:-password}
+      - WORDPRESS_WEBSITE_TITLE=${WORDPRESS_WEBSITE_TITLE}
+      - WORDPRESS_WEBSITE_URL=${WORDPRESS_WEBSITE_URL:-"http://localhost"}
+      - WORDPRESS_WEBSITE_URL_WITHOUT_HTTP=${WORDPRESS_WEBSITE_URL:-localhost}
+      - WORDPRESS_WEBSITE_POST_URL_STRUCTURE=${WORDPRESS_WEBSITE_POST_URL_STRUCTURE:-"/blog/%postname%/"}
+      - WORDPRESS_ADMIN_USER=${WORDPRESS_ADMIN_USER:-wordpress}
+      - WORDPRESS_ADMIN_PASSWORD=${WORDPRESS_ADMIN_PASSWORD:-wordpress}
+      - WORDPRESS_ADMIN_EMAIL=${WORDPRESS_ADMIN_EMAIL:-"test@example.com"}
     working_dir: /var/www/html
     depends_on:
       - wp
