@@ -90,3 +90,11 @@ conferir maldade:
   https://wordpress.stackexchange.com/questions/217676/get-posts-by-language-in-polylang-plugin
 
 
+
+comandos docker:
+
+One liner to stop / remove all of Docker containers:
+docker stop $(docker ps -a -q) 
+docker rm $(docker ps -a -q)
+docker-compose run --rm wpcli plugin list
+docker-compose run --rm wpcli bash 

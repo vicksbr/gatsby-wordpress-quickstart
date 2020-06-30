@@ -10,12 +10,14 @@ ENV WAIT_VERSION 2.7.2
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/$WAIT_VERSION/wait /wait
 RUN chmod +x /wait
 
-# Add Makefile to scripts dir
-ADD Makefile entrypoint.sh /scripts/
-ADD wpcli_init.sh /var/www/html/
+ADD cli-entrypoint.sh /usr/bin/cli-entrypoint.sh
+RUN chmod +x /usr/bin/cli-entrypoint.sh
 
+ADD Makefile entrypoint.sh /scripts/
 RUN chmod +x /scripts/entrypoint.sh
 
 ENTRYPOINT [ "/scripts/entrypoint.sh" ]
+
 USER 33:33
+
 CMD ["wp","shell"]

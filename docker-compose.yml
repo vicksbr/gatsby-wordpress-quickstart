@@ -1,4 +1,4 @@
-version: '3'
+version: '3.6'
 
 services:
   wp:
@@ -17,19 +17,19 @@ services:
       - db
     links:
       - db
-
+  
   wpcli:
-    image: wordpress:cli
+    build: ./docker/wpcli/
+    image: wpcli:custom
+    container_name: ${COMPOSE_PROJECT_NAME}_wpcli
     volumes:      
       - ./config/php.conf.ini/php.ini:/usr/local/etc/php/php.ini
       - ./wordpress:/var/www/html            
-    environment:
-        WP_CLI_CACHE_DIR: /var/www/html/wpcli/.cache/
-        WP_CLI_PACKAGES_DIR: /var/www/html/wpcli/packages
-    depends_on:
-      - db
-      - wp
-    
+    working_dir: /var/www/html
+    environment:    
+      WP_CLI_CACHE_DIR: /var/www/html/wpcli/.cache/
+      WP_CLI_PACKAGES_DIR: /var/www/html/wpcli/packages
+  
   pma:
     image: phpmyadmin/phpmyadmin
     environment:
@@ -56,21 +56,6 @@ services:
     environment:
       MYSQL_DATABASE: raccoon_wordpress
       MYSQL_ROOT_PASSWORD: admin
-
-
-healthcheck:
-    image: wpcli
-    build: ./wpcli/
-    container_name: ${COMPOSE_PROJECT_NAME}_healthcheck
-    command: sh -c "/wait"
-    environment:
-      - WAIT_HOSTS=mysql:3306, wordpress:80
-      - WAIT_BEFORE_HOSTS=${WAIT_BEFORE_HOSTS:-30}
-      - WAIT_AFTER_HOSTS=${WAIT_AFTER_HOSTS:-15}
-      - WAIT_HOSTS_TIMEOUT=${WAIT_HOSTS_TIMEOUT:-300}
-      - WAIT_SLEEP_INTERVAL=${WAIT_SLEEP_INTERVAL:-30}
-      - WAIT_HOST_CONNECT_TIMEOUT=${WAIT_HOST_CONNECT_TIMEOUT:-30}
-
 
 volumes:
   db_data:

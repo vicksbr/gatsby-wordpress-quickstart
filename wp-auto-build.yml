@@ -1,0 +1,24 @@
+version: '3.6'
+
+services:
+  raccoon-wp-boilerplate:
+    image: wpcli:custom
+    build: ./docker/wpcli/
+    container_name: ${COMPOSE_PROJECT_NAME}_autobuild          
+    entrypoint: sh -c "/wait && make -f /scripts/Makefile"
+    volumes:      
+      - ./config/php.conf.ini/php.ini:/usr/local/etc/php/php.ini
+      - ./wordpress:/var/www/html            
+    environment:
+      - WP_CLI_CACHE_DIR=/var/www/html/wpcli/.cache/
+      - WP_CLI_PACKAGES_DIR=/var/www/html/wpcli/packages
+      - WAIT_HOSTS=db:3306, wp:80
+      - WAIT_BEFORE_HOSTS=${WAIT_BEFORE_HOSTS:-30}
+      - WAIT_AFTER_HOSTS=${WAIT_AFTER_HOSTS:-15}
+      - WAIT_HOSTS_TIMEOUT=${WAIT_HOSTS_TIMEOUT:-300}
+      - WAIT_SLEEP_INTERVAL=${WAIT_SLEEP_INTERVAL:-30}
+      - WAIT_HOST_CONNECT_TIMEOUT=${WAIT_HOST_CONNECT_TIMEOUT:-30}
+    working_dir: /var/www/html
+    depends_on:
+      - wp
+      - db
