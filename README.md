@@ -45,23 +45,17 @@ comandos úteis
 
 ```
 docker-compose run --rm wpcli bash 
-docker-compose run --user XFS --rm wpcli bash 
+docker-compose run --rm --user=1000:1000 wpcli bash 
+docker-compose run run --rm --user=33:33 wpcli bas
 
 wp core install --url=localhost --title='Raccoon Boilerplate' --admin_user=admin --admin_password=admin --admin_email=fakeadmin@fakehost.fk
-wp theme activate raccoon-theme 
+wp theme activate raccoon
 wp rewrite structure '/%postname%/'
-
 wp plugin activate --all 
+wp package install wp-cli/doctor-command 
 
-
-
-wp package install front/wp-cli-build --allow-root
-wp package install wp-cli/doctor-command --allow-root
 wp package install git@github.com:diggy/polylang-cli.git --allow-root (novo, porém com problemas)
 
-
-
-wp posts list --skip-plugins=polylang
 
 ```
 
@@ -94,4 +88,5 @@ plugin interessante: https://github.com/diggy/wpdb2dict
 
 conferir maldade:
   https://wordpress.stackexchange.com/questions/217676/get-posts-by-language-in-polylang-plugin
+
 
