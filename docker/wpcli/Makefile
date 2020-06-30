@@ -13,8 +13,21 @@ configure:
 		
 
 	wp option update siteurl http://localhost	
+	
 	wp rewrite structure '/%postname%/'
+	
 	wp theme activate raccoon		
+	
 	wp plugin uninstall akismet hello
+	wp plugin install wordpress-importer 
+	wp plugin update --all
 	wp plugin activate --all 
+	
+	wp import ./wp-content/raccoon_boilerplate.xml  --authors=create
+
+	
+	
+
+
 		
+

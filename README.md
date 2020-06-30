@@ -46,7 +46,7 @@ comandos úteis
 ```
 docker-compose run --rm wpcli bash 
 docker-compose run --rm --user=1000:1000 wpcli bash 
-docker-compose run run --rm --user=33:33 wpcli bas
+docker-compose run run --rm --user=33:33 wpcli bash
 
 wp core install --url=localhost --title='Raccoon Boilerplate' --admin_user=admin --admin_password=admin --admin_email=fakeadmin@fakehost.fk
 wp theme activate raccoon
@@ -57,27 +57,13 @@ wp package install wp-cli/doctor-command
 wp package install git@github.com:diggy/polylang-cli.git --allow-root (novo, porém com problemas)
 
 
+wp plugin install wordpress-importer --activate
+wp import raccoon_boilerplate.xml --authors=create
+
 ```
 
 usando wp doctor:
   https://guides.wp-bullet.com/using-wp-cli-doctor-command-to-fix-large-wp_options-autoload-data/
-
-.htaccess
-```
-# BEGIN WordPress
-<IfModule mod_rewrite.c>
-RewriteEngine On
-RewriteBase /
-RewriteRule ^index\.php$ - [L]
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /index.php [L]
-php_value memory_limit 512M
-php_value post_max_size 512M
-php_value upload_max_filesize 512M
-</IfModule>
-# END WordPress
-``` 
 
 usando wp-cli-build:
 
@@ -98,3 +84,7 @@ docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 docker-compose run --rm wpcli plugin list
 docker-compose run --rm wpcli bash 
+
+
+
+docker-compose down -v && docker volume prune && sudo ./install.sh

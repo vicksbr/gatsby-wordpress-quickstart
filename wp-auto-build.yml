@@ -9,9 +9,8 @@ services:
     volumes:      
       - ./config/php.conf.ini/php.ini:/usr/local/etc/php/php.ini
       - ./wordpress:/var/www/html
-      - ./docker/raccoon_boilerplate.xml:/var/www/html/raccoon_boilerplate.xml           
     environment:
-      - WP_CLI_CACHE_DIR=/var/www/html/wpcli/.cache/
+      - WP_CLI_CACHE_DIR=/var/www/html/wpcli/.cache
       - WP_CLI_PACKAGES_DIR=/var/www/html/wpcli/packages
       - WAIT_HOSTS=db:3306, wp:80
       - WAIT_BEFORE_HOSTS=${WAIT_BEFORE_HOSTS:-30}
