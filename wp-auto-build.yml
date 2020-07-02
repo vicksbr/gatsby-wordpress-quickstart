@@ -4,7 +4,7 @@ services:
   raccoon-wp-boilerplate:
     image: wpcli:custom
     build: ./docker/wpcli/
-    container_name: ${COMPOSE_PROJECT_NAME}_autobuild          
+    container_name: raccoon_gatsby_wordpress_boilerplate          
     entrypoint: sh -c "/wait && make -f /scripts/Makefile"
     volumes:      
       - ./config/php.conf.ini/php.ini:/usr/local/etc/php/php.ini

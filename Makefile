@@ -17,6 +17,8 @@ autoinstall: start
 
 clean: down
 	@echo "💥 Removing related folders/files..."
+	@docker-compose down -v
 	@rm -rf  wordpress-db/* wordpress/*
+	
 
 reset: clean

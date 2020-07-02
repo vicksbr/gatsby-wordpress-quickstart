@@ -473,7 +473,9 @@ class acf_field_relationship extends acf_field {
 		/* search */	
 		if( in_array('search', $filters) ): ?>
 		<div class="filter -search">
-			<?php acf_text_input( array('placeholder' => __("Search...",'acf'), 'data-filter' => 's') ); ?>
+			<span>
+				<?php acf_text_input( array('placeholder' => __("Search...",'acf'), 'data-filter' => 's') ); ?>
+			</span>
 		</div>
 		<?php endif; 
 		
@@ -481,7 +483,9 @@ class acf_field_relationship extends acf_field {
 		/* post_type */	
 		if( in_array('post_type', $filters) ): ?>
 		<div class="filter -post_type">
-			<?php acf_select_input( array('choices' => $filter_post_type_choices, 'data-filter' => 'post_type') ); ?>
+			<span>
+				<?php acf_select_input( array('choices' => $filter_post_type_choices, 'data-filter' => 'post_type') ); ?>
+			</span>
 		</div>
 		<?php endif; 
 		
@@ -489,7 +493,9 @@ class acf_field_relationship extends acf_field {
 		/* post_type */	
 		if( in_array('taxonomy', $filters) ): ?>
 		<div class="filter -taxonomy">
-			<?php acf_select_input( array('choices' => $filter_taxonomy_choices, 'data-filter' => 'taxonomy') ); ?>
+			<span>
+				<?php acf_select_input( array('choices' => $filter_taxonomy_choices, 'data-filter' => 'taxonomy') ); ?>
+			</span>
 		</div>
 		<?php endif; ?>		
 	</div>
@@ -515,7 +521,7 @@ class acf_field_relationship extends acf_field {
 					<li>
 						<?php acf_hidden_input( array('name' => $field['name'].'[]', 'value' => $post->ID) ); ?>
 						<span data-id="<?php echo esc_attr($post->ID); ?>" class="acf-rel-item">
-							<?php echo acf_esc_html( $this->get_post_title( $post, $field ) ); ?>
+							<?php echo $this->get_post_title( $post, $field ); ?>
 							<a href="#" class="acf-icon -minus small dark" data-name="remove_item"></a>
 						</span>
 					</li>

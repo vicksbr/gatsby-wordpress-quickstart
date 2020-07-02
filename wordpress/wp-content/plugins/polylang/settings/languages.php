@@ -368,14 +368,6 @@ return array(
 		'flag'     => 'pe',
 		'facebook' => 'es_LA',
 	),
-	'es_PR' => array(
-		'code'     => 'es',
-		'locale'   => 'es_PR',
-		'name'     => 'Español',
-		'dir'      => 'ltr',
-		'flag'     => 'pr',
-		'facebook' => 'es_LA',
-	),
 	'es_UY' => array(
 		'code'     => 'es',
 		'locale'   => 'es_UY',

@@ -15,11 +15,11 @@ plugins instalados:
   | advanced-custom-fields             | active   | available | 5.8.7   |
   | advanced-custom-fields-table-field | active   | available | 1.3.9   |
   | advanced-custom-fields-pro         | active   | available | 5.8.2   |
-  | polylang                           | active   | none      | 2.7.3   |
-  | wp-graphql-master                  | active   | none      | 0.7.0   |
-  | wp-rest-polylang                   | active   | none      | 1.0.0   |
   | wp-api-menus                       | active   | none      | 1.3.1   |
   | wordpress-seo                      | active   | available | 14.2    |
+  | wp-graphql-master                  | active   | none      | 0.7.0   |
+  | wp-rest-polylang                   | active   | none      | 1.0.0   |
+  | polylang                           | active   | none      | 2.7.3   |
 
 
 exemplos: 
@@ -61,6 +61,26 @@ wp plugin install wordpress-importer --activate
 wp import raccoon_boilerplate.xml --authors=create
 
 ```
+comandos docker:
+
+
+One liner to stop / remove all of Docker containers:
+docker stop $(docker ps -a -q) 
+docker rm $(docker ps -a -q)
+docker-compose run --rm wpcli plugin list
+docker-compose run --rm wpcli bash 
+docker volume ls
+docker ps -a
+docker-compose down -v && docker volume prune -f 
+rotas página em ingles http://localhost/wp-json/wp/v2/pages?lang=en
+
+wp config set WP_DEBUG true
+
+
+
+
+
+
 
 usando wp doctor:
   https://guides.wp-bullet.com/using-wp-cli-doctor-command-to-fix-large-wp_options-autoload-data/
@@ -77,14 +97,9 @@ conferir maldade:
 
 
 
-comandos docker:
-
-One liner to stop / remove all of Docker containers:
-docker stop $(docker ps -a -q) 
-docker rm $(docker ps -a -q)
-docker-compose run --rm wpcli plugin list
-docker-compose run --rm wpcli bash 
+inserir paginas com tradução: https://wordpress.stackexchange.com/questions/224278/polylang-translation-of-a-custom-post-created-by-wp-insert-post
+atualizando varios posts com acf https://bishless.com/setting-custom-field-values-on-old-wordpress-posts-in-bulk-via-wp-cli/
+wpcli + bash commands: https://www.presslabs.com/code/wp-cli-guide-wp-term/
 
 
-
-docker-compose down -v && docker volume prune && sudo ./install.sh
+ get_posts(array('post_type' => 'post', 'lang' => 'pt'));

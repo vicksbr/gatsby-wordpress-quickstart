@@ -2,7 +2,7 @@ version: '3.6'
 
 services:
   wp:
-    image: wordpress:5.4.2
+    image: wordpress:5.3.2
     ports:
       - 80:80
     volumes:
@@ -13,6 +13,7 @@ services:
       WORDPRESS_DB_NAME: raccoon_wordpress 
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: admin
+      WORDPRESS_DEBUG: 1      
     depends_on:
       - db
     links:
@@ -21,7 +22,7 @@ services:
   wpcli:
     build: ./docker/wpcli/
     image: wpcli:custom
-    container_name: ${COMPOSE_PROJECT_NAME}_wpcli
+    container_name: raccoon_boilerplate_wpcli
     volumes:      
       - ./config/php.conf.ini/php.ini:/usr/local/etc/php/php.ini
       - ./wordpress:/var/www/html            
@@ -59,3 +60,6 @@ services:
 
 volumes:
   db_data:
+
+
+

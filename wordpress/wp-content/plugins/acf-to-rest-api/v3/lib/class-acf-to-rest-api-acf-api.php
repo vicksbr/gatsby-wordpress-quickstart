@@ -80,8 +80,7 @@ if ( ! class_exists( 'ACF_To_REST_API_ACF_API' ) ) {
 			}
 
 			if ( $this->get_id( $request ) ) {
-				$is_option = 'option' == $this->type && 'options' == $this->id;
-				if ( $field && ( $is_option || ! $is_option && $this->id > 0 ) ) {
+				if ( $field ) {
 					$data[ $field ] = get_field( $field, $this->id );
 				} else {
 					$fields = get_fields( $this->id );

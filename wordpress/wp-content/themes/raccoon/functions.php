@@ -1,6 +1,13 @@
 <?php 
 
 // Theme Setup
+add_action('init', 'do_output_buffer');
+
+function do_output_buffer() {
+        ob_start();
+}
+
+
 function flapper_theme_setup(){
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'title-tag' );

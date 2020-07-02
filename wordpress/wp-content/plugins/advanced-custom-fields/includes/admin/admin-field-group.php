@@ -407,7 +407,11 @@ class acf_admin_field_group {
 	
 	// modify status
 	$('#post-status-display').html('<?php echo $status; ?>');
-
+	
+	
+	// remove edit links
+	$('#misc-publishing-actions a').remove();
+	
 })(jQuery);	
 </script>
 <?php	
