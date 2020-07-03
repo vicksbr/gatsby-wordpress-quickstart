@@ -1,7 +1,9 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/browser-apis/
- */
+import React from "react"
+import { StateProvider } from "./src/store/StateProvider"
+import { siteReducer, appInitialState } from "./src/store/reducers"
 
-// You can delete this file if you're not using it
+export const wrapRootElement = ({ element }) => (
+  <StateProvider reducer={siteReducer} initialState={appInitialState}>
+    {element}
+  </StateProvider>
+)

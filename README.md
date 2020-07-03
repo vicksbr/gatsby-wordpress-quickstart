@@ -103,3 +103,6 @@ wpcli + bash commands: https://www.presslabs.com/code/wp-cli-guide-wp-term/
 
 
  get_posts(array('post_type' => 'post', 'lang' => 'pt'));
+ 
+ 
+ gatsbt react reducer https://markoskon.com/gatsby-react-intl-example/
