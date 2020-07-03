@@ -45,8 +45,7 @@ export const pageQuery = graphql`
             acf {
                 home_first_text
                 home_second_text
-                home_title
-                home_image { localFile { childImageSharp { fixed { src } } } }
+                home_title                
             }
         }
     }
