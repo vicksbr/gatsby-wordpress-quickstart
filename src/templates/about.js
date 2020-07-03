@@ -1,21 +1,48 @@
-import React from "react"
-import { Link } from "gatsby"
-import SEO from "../components/seo"
+import React from 'react'
+import { graphql } from 'gatsby'
 import Layout from "../components/layout"
-import PropTypes from 'prop-types'
 
-const AboutPage = () => {
+
+const About = ({ data, location }) => {
+    const {
+        wordpressPage: {
+            title, yoast_head:
+            pageSEO,
+            polylang_current_lang:
+            currentLanguage,
+            polylang_translations: translationPages
+        }
+    } = data
+
     return (
-        <Layout >
-            <SEO title="about" />
-            <h1>Sobre nós</h1>
-            <p>Somos incríveis desenvolvedores de software!</p>
+        <Layout
+            pageLocation={location}
+            currentLanguage={currentLanguage}
+            translationPages={translationPages}
+        >
+            <pre>
+                {JSON.stringify(location, null, 4)}
+                {JSON.stringify(data, null, 4)}
+            </pre>
         </Layout>
     )
 }
 
-AboutPage.propTypes = {
 
-}
+export const pageQuery = graphql`
+    query ($wordpress_id: Int) {
+        wordpressPage(wordpress_id: { eq: $wordpress_id}) {
+            title
+            content
+            polylang_current_lang
+            polylang_translations {
+                path
+                polylang_current_lang
+            }
+            yoast_head
+        }
+    }
+`
 
-export default AboutPage
+
+export default About

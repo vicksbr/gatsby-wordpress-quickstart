@@ -4,8 +4,9 @@ import Layout from "../components/layout"
 import Image from "../components/image"
 import SEO from "../components/seo"
 
-const IndexPage = () => (
-  <Layout>
+const IndexPage = ({ location }) => (
+  <Layout pageLocation={location} currentLanguage='pt_BR' translationPages={[]} >
+
     <SEO title="Home" />
     <h1>Ola desenvolvedor!</h1>
     <p>Bem vindo ao raccoon-gatsby-wordpresss boilerplate .</p>

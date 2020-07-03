@@ -3,6 +3,9 @@ import PropTypes from "prop-types"
 import React from "react"
 import useHeaderData from './useHeaderData'
 import { parseUrl } from '../../utils'
+import useSiteAPI from "../../store/useSiteAPI";
+import { navigate } from '@reach/router';
+import { groupBy } from "../../utils"
 
 const linkStyle = {
   padding: '2px 4px',
@@ -19,32 +22,48 @@ const MenuItem = ({ item }) => {
     <a style={linkStyle} href={item.url}><ItemTitle /></a>
 }
 
-const NavMenu = ({ menus }) => (
+const NavMenu = ({ menus, translationPages, currentLanguage }) => (
   <nav>
     <a style={{ padding: '2px 4px', color: 'black', float: 'left' }} href="/">Raccon Boilerplate</a>
     {menus.map((item, index) => <MenuItem key={index} item={item} />)}
-    <LanguageSwitcher />
+    <LanguageSwitcher translationPages={translationPages} currentLanguage={currentLanguage} />
     <a style={linkStyle} href="/login/">Login</a>
   </nav>
 )
 
-const LanguageSwitcher = () => {
+const LanguageSwitcher = ({ translationPages, currentLanguage }) => {
+
+  const { state, setLanguage } = useSiteAPI()
+  const countryLanguageCodes = { 'Português': 'pt_BR', 'Inglês': 'en_US' }
+  const CodeCountryName = { 'pt_BR': 'Português', 'en_US': 'Inglês' }
+
+  const translatedPagePath = groupBy(translationPages, 'polylang_current_lang')
+
+  const handleLanguageChange = (languageToSwitch) => {
+    const destinationPageLanguageCode = countryLanguageCodes[languageToSwitch]
+    setLanguage(countryLanguageCodes[languageToSwitch])
+    navigate(translatedPagePath[destinationPageLanguageCode][0].path)
+  }
+
   return (
-    <select>
+    <select value={CodeCountryName[currentLanguage]} onChange={(event) => handleLanguageChange(event.target.value)}>
       <option>Português</option>
       <option>Inglês</option>
     </select>
   )
 }
 
-const Header = ({ siteTitle }) => {
+const Header = ({ siteTitle, pageLocation, currentLanguage, translationPages }) => {
 
-  const { wpMenuItems } = useHeaderData()
+  const { state } = useSiteAPI()
+  const language = currentLanguage || state.language
+  const { wpMenuItems } = useHeaderData(language)
+
 
   return (
     <header style={{ background: `orange`, marginBottom: `1.45rem`, }}>
       <div style={{ textAlign: 'right', padding: `1.45rem 1.0875rem` }}>
-        <NavMenu menus={wpMenuItems} />
+        <NavMenu menus={wpMenuItems} translationPages={translationPages} currentLanguage={language} />
       </div>
     </header>
   )
