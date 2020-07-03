@@ -10,10 +10,7 @@ module.exports = {
     `gatsby-plugin-sharp`,
     {
       resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
-      },
+      options: { name: `images`, path: `${__dirname}/src/images`, },
     },
     {
       resolve: `gatsby-plugin-manifest`,
@@ -34,7 +31,7 @@ module.exports = {
         protocol: "http",
         hostingWPCOM: false,
         useACF: true,
-        acfOptionPageIds: ['options_pt_BR', 'options_en_US', 'options_es_ES'],
+        acfOptionPageIds: ['options_pt_BR', 'options_en_US'],
         excludedRoutes: [
           "/wp/v2/users/me",
           "/acf/v2/options",

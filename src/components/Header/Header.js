@@ -5,7 +5,7 @@ import useHeaderData from './useHeaderData'
 import { parseUrl } from '../../utils'
 import useSiteAPI from "../../store/useSiteAPI";
 import { navigate } from 'gatsby';
-import { groupBy } from "../../utils"
+import { groupBy, getHomeURL } from "../../utils"
 
 const linkStyle = {
   padding: '2px 4px',
@@ -22,22 +22,28 @@ const MenuItem = ({ item }) => {
     <a style={linkStyle} href={item.url}><ItemTitle /></a>
 }
 
-const NavMenu = ({ menus, translationPages, currentLanguage }) => (
-  <nav>
-    <a style={{ padding: '2px 4px', color: 'black', float: 'left' }} href="/">Raccon Boilerplate</a>
-    {menus.map((item, index) => <MenuItem key={index} item={item} />)}
-    <LanguageSwitcher translationPages={translationPages} currentLanguage={currentLanguage} />
-    <a style={linkStyle} href="/login/">Login</a>
-  </nav>
-)
+const NavMenu = ({ menus, translationPages, currentLanguage }) => {
+
+  return (
+    <nav>
+      <Link style={{ padding: '2px 4px', color: 'black', float: 'left' }} to={getHomeURL(currentLanguage)}>
+        Raccon Boilerplate
+      </Link>
+      {menus.map((item, index) => <MenuItem key={index} item={item} />)}
+      <LanguageSwitcher translationPages={translationPages} currentLanguage={currentLanguage} />
+    </nav>
+  )
+}
 
 const LanguageSwitcher = ({ translationPages, currentLanguage }) => {
 
   const { setLanguage } = useSiteAPI()
-  const countryLanguageCodes = { 'Português': 'pt_BR', 'Inglês': 'en_US' }
-  const CodeCountryName = { 'pt_BR': 'Português', 'en_US': 'Inglês' }
-
   const translatedPagePath = groupBy(translationPages, 'polylang_current_lang')
+
+
+
+  const countryLanguageCodes = { 'Português': 'pt_BR', 'Inglês': 'en_US' }
+  const codeCountryName = { 'pt_BR': 'Português', 'en_US': 'Inglês' }
 
   const handleLanguageChange = (languageToSwitch) => {
     const destinationPageCountryCode = countryLanguageCodes[languageToSwitch]
@@ -46,7 +52,7 @@ const LanguageSwitcher = ({ translationPages, currentLanguage }) => {
   }
 
   return (
-    <select value={CodeCountryName[currentLanguage]} onChange={(event) => handleLanguageChange(event.target.value)}>
+    <select value={codeCountryName[currentLanguage]} onChange={(event) => handleLanguageChange(event.target.value)}>
       <option>Português</option>
       <option>Inglês</option>
     </select>

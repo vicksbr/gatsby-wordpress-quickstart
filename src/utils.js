@@ -9,3 +9,14 @@ export const groupBy = (array, key) => {
     }, {});
 };
 
+export const getHomeURL = (languageCode) => {
+    const codeMapToPath = {
+        'pt_BR': '/',
+        'en_US': '/en',
+    }
+    return codeMapToPath[languageCode]
+}
+
+
+
+
