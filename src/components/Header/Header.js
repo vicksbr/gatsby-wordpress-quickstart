@@ -24,10 +24,8 @@ const MenuItem = ({ item }) => {
 
 const NavMenu = ({ menus, translationPages, currentLanguage }) => (
   <nav>
-    <a style={{ padding: '2px 4px', color: 'black', float: 'left' }} href="/">Raccon Boilerplate</a>
     {menus.map((item, index) => <MenuItem key={index} item={item} />)}
     <LanguageSwitcher translationPages={translationPages} currentLanguage={currentLanguage} />
-    <a style={linkStyle} href="/login/">Login</a>
   </nav>
 )
 
