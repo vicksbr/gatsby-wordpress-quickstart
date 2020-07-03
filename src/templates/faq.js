@@ -20,8 +20,7 @@ const Faq = ({ data, location }) => {
             translationPages={translationPages}
         >
             <pre>
-                {JSON.stringify(location.path, null, 4)}
-                {JSON.stringify(data, null, 4)}
+                {JSON.stringify({ pagePath: location.pathname, pageLanguage: currentLanguage, pageProps: data }, null, 4)}
             </pre>
         </Layout>
     )
@@ -34,10 +33,7 @@ export const pageQuery = graphql`
             title
             content
             polylang_current_lang
-            polylang_translations {
-                path
-                polylang_current_lang
-            }
+            polylang_translations { path polylang_current_lang }
             yoast_head
         }
         wordpressAcfPages(wordpress_id: {eq: $wordpress_id}) {

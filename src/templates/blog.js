@@ -20,8 +20,7 @@ const Blog = ({ data, location }) => {
             translationPages={translationPages}
         >
             <pre>
-                {JSON.stringify(location.path, null, 4)}
-                {JSON.stringify(data, null, 4)}
+                {JSON.stringify({ pagePath: location.pathname, pageLanguage: currentLanguage, pageProps: data }, null, 4)}
             </pre>
         </Layout>
     )

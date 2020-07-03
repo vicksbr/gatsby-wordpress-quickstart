@@ -13,9 +13,7 @@ const About = ({ data, location }) => {
             translationPages={translationPages}
         >
             <pre>
-                {JSON.stringify(data, null, 2)}
-                {JSON.stringify(acfPage, null, 2)}
-
+                {JSON.stringify({ pagePath: location.pathname, pageLanguage: currentLanguage, pageProps: data }, null, 4)}
             </pre>
         </Layout>
     )
