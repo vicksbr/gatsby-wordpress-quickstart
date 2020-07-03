@@ -33,16 +33,16 @@ const NavMenu = ({ menus, translationPages, currentLanguage }) => (
 
 const LanguageSwitcher = ({ translationPages, currentLanguage }) => {
 
-  const { state, setLanguage } = useSiteAPI()
+  const { setLanguage } = useSiteAPI()
   const countryLanguageCodes = { 'Português': 'pt_BR', 'Inglês': 'en_US' }
   const CodeCountryName = { 'pt_BR': 'Português', 'en_US': 'Inglês' }
 
   const translatedPagePath = groupBy(translationPages, 'polylang_current_lang')
 
   const handleLanguageChange = (languageToSwitch) => {
-    const destinationPageLanguageCode = countryLanguageCodes[languageToSwitch]
+    const destinationPageCountryCode = countryLanguageCodes[languageToSwitch]
     setLanguage(countryLanguageCodes[languageToSwitch])
-    navigate(translatedPagePath[destinationPageLanguageCode][0].path)
+    navigate(translatedPagePath[destinationPageCountryCode][0].path)
   }
 
   return (
@@ -57,6 +57,7 @@ const Header = ({ siteTitle, pageLocation, currentLanguage, translationPages }) 
 
   const { state } = useSiteAPI()
   const language = currentLanguage || state.language
+
   const { wpMenuItems } = useHeaderData(language)
 
 

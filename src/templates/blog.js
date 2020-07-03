@@ -20,7 +20,7 @@ const Blog = ({ data, location }) => {
             translationPages={translationPages}
         >
             <pre>
-                {JSON.stringify(location, null, 4)}
+                {JSON.stringify(location.path, null, 4)}
                 {JSON.stringify(data, null, 4)}
             </pre>
         </Layout>
@@ -39,6 +39,12 @@ export const pageQuery = graphql`
                 polylang_current_lang
             }
             yoast_head
+        }
+        wordpressAcfPages(wordpress_id: {eq: $wordpress_id}) {
+            acf {
+              blog_section_title
+              blog_description
+            }
         }
     }
 `

@@ -4,15 +4,7 @@ import Layout from "../components/layout"
 
 
 const About = ({ data, location }) => {
-    const {
-        wordpressPage: {
-            title, yoast_head:
-            pageSEO,
-            polylang_current_lang:
-            currentLanguage,
-            polylang_translations: translationPages
-        }
-    } = data
+    const { wordpressPage: { title, yoast_head: pageSEO, polylang_current_lang: currentLanguage, polylang_translations: translationPages }, acfPage } = data
 
     return (
         <Layout
@@ -21,8 +13,9 @@ const About = ({ data, location }) => {
             translationPages={translationPages}
         >
             <pre>
-                {JSON.stringify(location, null, 4)}
-                {JSON.stringify(data, null, 4)}
+                {JSON.stringify(data, null, 2)}
+                {JSON.stringify(acfPage, null, 2)}
+
             </pre>
         </Layout>
     )
@@ -35,11 +28,14 @@ export const pageQuery = graphql`
             title
             content
             polylang_current_lang
-            polylang_translations {
-                path
-                polylang_current_lang
-            }
+            polylang_translations { path polylang_current_lang }
             yoast_head
+        }
+        wordpressAcfPages(wordpress_id: { eq: $wordpress_id}) {
+            acf {
+                about_description
+                about_title
+            }
         }
     }
 `

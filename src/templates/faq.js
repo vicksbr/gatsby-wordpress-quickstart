@@ -20,7 +20,7 @@ const Faq = ({ data, location }) => {
             translationPages={translationPages}
         >
             <pre>
-                {JSON.stringify(location, null, 4)}
+                {JSON.stringify(location.path, null, 4)}
                 {JSON.stringify(data, null, 4)}
             </pre>
         </Layout>
@@ -40,6 +40,12 @@ export const pageQuery = graphql`
             }
             yoast_head
         }
+        wordpressAcfPages(wordpress_id: {eq: $wordpress_id}) {
+            acf {           
+              faq_title
+              faq_questions { answer question }
+            }
+          }
     }
 `
 
