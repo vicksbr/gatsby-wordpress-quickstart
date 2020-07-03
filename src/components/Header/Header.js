@@ -4,7 +4,7 @@ import React from "react"
 import useHeaderData from './useHeaderData'
 import { parseUrl } from '../../utils'
 import useSiteAPI from "../../store/useSiteAPI";
-import { navigate } from '@reach/router';
+import { navigate } from 'gatsby';
 import { groupBy } from "../../utils"
 
 const linkStyle = {
