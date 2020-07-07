@@ -4,16 +4,16 @@ import Layout from "../components/layout"
 
 
 const About = ({ data, location }) => {
-    const { wordpressPage: { title, yoast_head: pageSEO, polylang_current_lang: currentLanguage, polylang_translations: translationPages }, acfPage } = data
+    const { wordpressPage: { title, yoast_head: pageSEO, polylang_current_lang: currentPageLanguage, polylang_translations: currentPageTranslationsMeta }, acfPage } = data
 
     return (
         <Layout
-            pageLocation={location}
-            currentLanguage={currentLanguage}
-            translationPages={translationPages}
+            currentPageLocation={location}
+            currentPageLanguage={currentPageLanguage}
+            currentPageTranslationsMeta={currentPageTranslationsMeta}
         >
             <pre>
-                {JSON.stringify({ pagePath: location.pathname, pageLanguage: currentLanguage, pageProps: data }, null, 4)}
+                {JSON.stringify({ pagePath: location.pathname, pageLanguage: currentPageLanguage, pageProps: data }, null, 4)}
             </pre>
         </Layout>
     )

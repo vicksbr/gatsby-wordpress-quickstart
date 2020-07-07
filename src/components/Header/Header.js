@@ -1,76 +1,63 @@
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
+import Link from "../link"
 import useHeaderData from './useHeaderData'
-import { parseUrl } from '../../utils'
 import useSiteAPI from "../../store/useSiteAPI";
+import { parseUrl } from '../../utils'
 import { navigate } from 'gatsby';
-import { groupBy, getHomeURL } from "../../utils"
+import { groupBy, getHomeURL, getHeaderOptions } from "../../utils"
 
 const linkStyle = {
   padding: '2px 4px',
   color: 'black'
 }
 
+const MenuItem = ({ item }) => (
+    <Link style={linkStyle} to={item.url} type={item.type}>
+        <span>{item.title}</span>
+    </Link>
+  
+)
 
-const MenuItem = ({ item }) => {
-  const ItemTitle = () => <span>{item.title}</span>
-
-  return item.type !== "custom" ?
-    <Link style={linkStyle} to={parseUrl(item.url)}><ItemTitle /></Link>
-    :
-    <a style={linkStyle} href={item.url}><ItemTitle /></a>
-}
-
-const NavMenu = ({ menus, translationPages, currentLanguage }) => {
-
-  return (
+const NavMenu = ({ menus, currentPageTranslationsMeta, currentPageLanguage }) => (
     <nav>
-      <Link style={{ padding: '2px 4px', color: 'black', float: 'left' }} to={getHomeURL(currentLanguage)}>
-        Raccon Boilerplate
-      </Link>
+      <Link style={{ padding: '2px 4px', color: 'black', float: 'left' }} to={getHomeURL(currentPageLanguage)}>Raccon Boilerplate</Link>
       {menus.map((item, index) => <MenuItem key={index} item={item} />)}
-      <LanguageSwitcher translationPages={translationPages} currentLanguage={currentLanguage} />
+      <LanguageSwitcher currentPageTranslationsMeta={currentPageTranslationsMeta} currentPageLanguage={currentPageLanguage} />
     </nav>
-  )
-}
+  
+)
 
-const LanguageSwitcher = ({ translationPages, currentLanguage }) => {
+const LanguageSwitcher = ({ currentPageTranslationsMeta, currentPageLanguage }) => {
 
   const { setLanguage } = useSiteAPI()
-  const translatedPagePath = groupBy(translationPages, 'polylang_current_lang')
+  const options = getHeaderOptions(currentPageLanguage)
+  const translationsPath = groupBy(currentPageTranslationsMeta, 'polylang_current_lang')
 
+  
+  const handleLanguageChange = (language) => {
+    const translatedPath = translationsPath[language][0].path
 
-
-  const countryLanguageCodes = { 'Português': 'pt_BR', 'Inglês': 'en_US' }
-  const codeCountryName = { 'pt_BR': 'Português', 'en_US': 'Inglês' }
-
-  const handleLanguageChange = (languageToSwitch) => {
-    const destinationPageCountryCode = countryLanguageCodes[languageToSwitch]
-    setLanguage(countryLanguageCodes[languageToSwitch])
-    navigate(translatedPagePath[destinationPageCountryCode][0].path)
+    setLanguage(language)
+    navigate(translatedPath)
   }
 
   return (
-    <select value={codeCountryName[currentLanguage]} onChange={(event) => handleLanguageChange(event.target.value)}>
-      <option>Português</option>
-      <option>Inglês</option>
+    <select value={currentPageLanguage} onChange={(event) => handleLanguageChange(event.target.value)}>            
+      {options.map(lang => <option value={lang.value}>{lang.label}</option>)}
     </select>
   )
 }
 
-const Header = ({ siteTitle, pageLocation, currentLanguage, translationPages }) => {
-
+const Header = ({ siteTitle, currentPageLocation, currentPageLanguage, currentPageTranslationsMeta }) => {
   const { state } = useSiteAPI()
-  const language = currentLanguage || state.language
-
+  const language = currentPageLanguage || state.language
   const { wpMenuItems } = useHeaderData(language)
-
 
   return (
     <header style={{ background: `orange`, marginBottom: `1.45rem`, }}>
       <div style={{ textAlign: 'right', padding: `1.45rem 1.0875rem` }}>
-        <NavMenu menus={wpMenuItems} translationPages={translationPages} currentLanguage={language} />
+        <NavMenu menus={wpMenuItems} currentPageTranslationsMeta={currentPageTranslationsMeta} currentPageLanguage={language} />
       </div>
     </header>
   )

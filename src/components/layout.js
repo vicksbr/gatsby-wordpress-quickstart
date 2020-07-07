@@ -19,15 +19,19 @@ const Layout = ({ children, ...props }) => {
     }
   `)
 
-  const { pageLocation, currentLanguage, translationPages } = props
+  const { 
+    currentPageLocation, 
+    currentPageLanguage, 
+    currentPageTranslationsMeta 
+  } = props
 
   return (
     <>
       <Header
         siteTitle={data.site.siteMetadata.title}
-        pageLocation={pageLocation}
-        currentLanguage={currentLanguage}
-        translationPages={translationPages}
+        currentPageLocation={currentPageLocation}
+        currentPageLanguage={currentPageLanguage}
+        currentPageTranslationsMeta={currentPageTranslationsMeta}
       />
       <div style={{ margin: `0 auto`, maxWidth: 960, padding: `0 1.0875rem 0`, }} >
         <main>

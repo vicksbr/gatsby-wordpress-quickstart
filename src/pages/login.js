@@ -4,7 +4,7 @@ import SEO from "../components/seo"
 import Layout from "../components/layout"
 
 const LoginPage = ({ location }) => (
-    <Layout pageLocation={location} currentLanguage='pt_BR' translationPages={[]} >
+    <Layout currentPageLocation={location} currentPageLanguage='pt_BR' currentPageTranslationsMeta={[]} >
         <SEO title="Login" />
         <h1>Esse é a página de Login </h1>
         <p>Lista de posts</p>

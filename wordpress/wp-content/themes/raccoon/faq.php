@@ -1,8 +1,9 @@
 <?php
 
 /*
-Template Name: About
-Template Post Type: Faq
+Template Name: Faq
+Template Post Type: page
 */
 
 ?>
+
