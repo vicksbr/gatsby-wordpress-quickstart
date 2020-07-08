@@ -7,7 +7,7 @@ import Login from "../components/login"
 const App = () => (
   <Layout>
     <Router basepath="/app">
-      <Login path="/app/login" />
+      <Login path="/login" />
     </Router>
   </Layout>
 )

@@ -13,19 +13,19 @@ const linkStyle = {
 }
 
 const MenuItem = ({ item }) => (
-    <Link style={linkStyle} to={item.url} type={item.type}>
-        <span>{item.title}</span>
-    </Link>
-  
+  <Link style={linkStyle} to={item.url} type={item.type}>
+    <span>{item.title}</span>
+  </Link>
+
 )
 
 const NavMenu = ({ menus, currentPageTranslationsMeta, currentPageLanguage }) => (
-    <nav>
-      <Link style={{ padding: '2px 4px', color: 'black', float: 'left' }} to={getHomeURL(currentPageLanguage)}>Raccon Boilerplate</Link>
-      {menus.map((item, index) => <MenuItem key={index} item={item} />)}
-      <LanguageSwitcher currentPageTranslationsMeta={currentPageTranslationsMeta} currentPageLanguage={currentPageLanguage} />
-    </nav>
-  
+  <nav>
+    <Link style={{ padding: '2px 4px', color: 'black', float: 'left' }} to={getHomeURL(currentPageLanguage)}>Raccon Boilerplate</Link>
+    {menus.map((item, index) => <MenuItem key={index} item={item} />)}
+    <LanguageSwitcher currentPageTranslationsMeta={currentPageTranslationsMeta} currentPageLanguage={currentPageLanguage} />
+  </nav>
+
 )
 
 const LanguageSwitcher = ({ currentPageTranslationsMeta, currentPageLanguage }) => {
@@ -41,7 +41,7 @@ const LanguageSwitcher = ({ currentPageTranslationsMeta, currentPageLanguage }) 
   }
 
   return (
-    <select value={currentPageLanguage} onChange={(event) => handleLanguageChange(event.target.value)}>            
+    <select value={currentPageLanguage} onChange={(event) => handleLanguageChange(event.target.value)}>
       {options.map(lang => <option key={lang.label} value={lang.value}>{lang.label}</option>)}
     </select>
   )

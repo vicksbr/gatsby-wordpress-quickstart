@@ -4,7 +4,7 @@ const { slash } = require(`gatsby-core-utils`);
 const getHomePath = (path, pageLanguage) => {
   if (pageLanguage === "pt_BR")
     return '/'
-  
+
   return `/${path.split('/')[1]}`
 
 }
