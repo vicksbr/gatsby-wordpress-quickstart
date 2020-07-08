@@ -8,24 +8,24 @@ const Home = ({ data, location }) => {
         wordpressPage: {
             title,
             yoast_head: pageSEO,
-            polylang_current_lang: currentLanguage,
+            polylang_current_lang: currentPageLanguage,
         },
 
     } = data
 
-    const HomeTranslationPages = [
+    const homeTranslationsMeta = [
         { path: '/', polylang_current_lang: 'pt_BR' },
         { path: '/en', polylang_current_lang: 'en_US' }
     ]
 
     return (
         <Layout
-            pageLocation={location}
-            currentLanguage={currentLanguage}
-            translationPages={HomeTranslationPages}
+            currentPageLocation={location}
+            currentPageLanguage={currentPageLanguage}
+            currentPageTranslationsMeta={homeTranslationsMeta}
         >
             <pre>
-                {JSON.stringify({ pagePath: location.pathname, pageLanguage: currentLanguage, pageProps: data }, null, 4)}
+                {JSON.stringify({ pagePath: location.pathname, pageLanguage: currentPageLanguage, pageProps: data }, null, 4)}
             </pre>
         </Layout>
     )
