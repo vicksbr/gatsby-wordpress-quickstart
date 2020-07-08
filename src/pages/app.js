@@ -4,9 +4,14 @@ import Layout from "../components/layout"
 import Login from "../components/login"
 
 
-const App = () => (
-  <Router basepath="/app">
-    <Login path="/login" />
-  </Router>
-)
+const App = (props) => {
+  console.log(props)
+
+  return (
+    <Router basepath="/app">
+      <Login path="/login" />
+    </Router>
+  )
+}
+
 export default App

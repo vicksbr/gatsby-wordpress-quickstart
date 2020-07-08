@@ -1,15 +1,15 @@
-export const getHeaderOptions = (languageCode) =>  {
-    const options = { 
+export const getHeaderOptions = (languageCode) => {
+    const options = {
         'pt_BR': [
-          {value:'pt_BR', label:'Português'},
-          {value:'en_US', label:'Inglês'},
-          
-        ],    
+            { value: 'pt_BR', label: 'Português' },
+            { value: 'en_US', label: 'Inglês' },
+
+        ],
         'en_US': [
-          {value:'pt_BR', label:'Portuguese'},
-          {value:'en_US', label:'English'},
-          
-        ],    
+            { value: 'pt_BR', label: 'Portuguese' },
+            { value: 'en_US', label: 'English' },
+
+        ],
     }
     return options[languageCode]
 
@@ -34,6 +34,8 @@ export const getHomeURL = (languageCode) => {
     return codeMapToPath[languageCode]
 }
 
+
+// hooks
 
 
 

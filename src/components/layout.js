@@ -12,6 +12,7 @@ import Header from "./Header";
 import Footer from "./footer"
 import "./layout.css"
 
+
 const Layout = ({ children, ...props }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -19,10 +20,10 @@ const Layout = ({ children, ...props }) => {
     }
   `)
 
-  const { 
-    currentPageLocation, 
-    currentPageLanguage, 
-    currentPageTranslationsMeta 
+  const {
+    currentPageLocation,
+    currentPageLanguage,
+    currentPageTranslationsMeta
   } = props
 
   return (
