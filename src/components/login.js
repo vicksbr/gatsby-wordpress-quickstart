@@ -4,14 +4,13 @@ import SEO from "../components/seo"
 import Layout from "../components/layout"
 import useSiteAPI from "../store/useSiteAPI"
 
-const Login = ({ location }) => {
+const Login = (props) => {
+
+    console.log('login', props)
+
     return (
         <div>
-            <h1>Esse é a página de Login</h1>
-            <h1>Esse é a página de Login</h1>
-            <h1>Esse é a página de Login</h1>
-            <h1>Esse é a página de Login</h1>
-            <h1>Esse é a página de Login</h1>
+            <h1>Página Login</h1>
             <Link to="/">Voltar</Link>
         </div>
 

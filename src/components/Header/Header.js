@@ -3,9 +3,8 @@ import React from "react"
 import Link from "../link"
 import useHeaderData from './useHeaderData'
 import useSiteAPI from "../../store/useSiteAPI";
-import { parseUrl } from '../../utils'
 import { navigate } from 'gatsby';
-import { groupBy, getHomeURL, getHeaderOptions, useHasMounted } from "../../utils"
+import { groupBy, getHomeURL, getHeaderOptions } from "../../utils"
 
 const linkStyle = {
   padding: '2px 4px',
@@ -48,7 +47,7 @@ const LanguageSwitcher = ({ currentPageTranslationsMeta, currentPageLanguage }) 
   )
 }
 
-const Header = ({ siteTitle, currentPageLocation, currentPageLanguage, currentPageTranslationsMeta }) => {
+const Header = ({ currentPageLanguage, currentPageTranslationsMeta }) => {
 
   const { state } = useSiteAPI()
   const language = currentPageLanguage || state.language
