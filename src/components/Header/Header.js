@@ -24,6 +24,7 @@ const NavMenu = ({ menus, currentPageTranslationsMeta, currentPageLanguage }) =>
     <Link style={{ padding: '2px 4px', color: 'black', float: 'left' }} to={getHomeURL(currentPageLanguage)}>Raccon Boilerplate</Link>
     {menus.map((item, index) => <MenuItem key={index} item={item} />)}
     <LanguageSwitcher currentPageTranslationsMeta={currentPageTranslationsMeta} currentPageLanguage={currentPageLanguage} />
+    <Link to={"/app/login"}>Login</Link>
   </nav>
 
 )
