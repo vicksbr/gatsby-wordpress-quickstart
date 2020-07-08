@@ -5,10 +5,8 @@ import Login from "../components/login"
 
 
 const App = () => (
-  <Layout>
-    <Router basepath="/app">
-      <Login path="/login" />
-    </Router>
-  </Layout>
+  <Router basepath="/app">
+    <Login path="/login" />
+  </Router>
 )
 export default App
