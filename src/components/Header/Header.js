@@ -29,12 +29,10 @@ const NavMenu = ({ menus, currentPageTranslationsMeta, currentPageLanguage }) =>
 )
 
 const LanguageSwitcher = ({ currentPageTranslationsMeta, currentPageLanguage }) => {
-
   const { setLanguage } = useSiteAPI()
   const options = getHeaderOptions(currentPageLanguage)
   const translationsPath = groupBy(currentPageTranslationsMeta, 'polylang_current_lang')
 
-  
   const handleLanguageChange = (language) => {
     const translatedPath = translationsPath[language][0].path
 
@@ -44,7 +42,7 @@ const LanguageSwitcher = ({ currentPageTranslationsMeta, currentPageLanguage }) 
 
   return (
     <select value={currentPageLanguage} onChange={(event) => handleLanguageChange(event.target.value)}>            
-      {options.map(lang => <option value={lang.value}>{lang.label}</option>)}
+      {options.map(lang => <option key={lang.label} value={lang.value}>{lang.label}</option>)}
     </select>
   )
 }

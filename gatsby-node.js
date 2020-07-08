@@ -4,8 +4,7 @@ const { slash } = require(`gatsby-core-utils`);
 const getHomePath = (path, pageLanguage) => {
   if (pageLanguage === "pt_BR")
     return '/'
-
-  console.log(`/${path.split('/')[1]}`)
+  
   return `/${path.split('/')[1]}`
 
 }
@@ -25,11 +24,17 @@ const getTemplate = (phpFile) => {
 }
 
 
+exports.onCreatePage = async ({ page, actions }) => {
+  const { createPage } = actions
+  if (page.path.match(/^\/app/)) {
+    page.matchPath = "/app/*"
+    createPage(page)
+  }
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
-
   const pages = await graphql(`{ allWordpressPage { edges { node { template path wordpress_id polylang_current_lang } } } } `);
-
 
   pages.data.allWordpressPage.edges.forEach(({ node }) => {
     const { path, template, wordpress_id, polylang_current_lang } = node
