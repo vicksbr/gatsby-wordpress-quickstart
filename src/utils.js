@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 export const getHeaderOptions = (languageCode) => {
     const options = {
         'pt_BR': [
@@ -12,7 +14,6 @@ export const getHeaderOptions = (languageCode) => {
         ],
     }
     return options[languageCode]
-
 }
 
 // parser stuff
@@ -35,7 +36,20 @@ export const getHomeURL = (languageCode) => {
 }
 
 
-// hooks
+// hooks 
+
+export const useLocalStorage = (key) => {
+    const _localStorage = localStorage.getItem(key)
+    const cachedData = _localStorage ? JSON.parse(_localStorage) : null;
+    const [data, setData] = useState(cachedData);
+
+    return [data, (newData) => {
+        localStorage.setItem(key, JSON.stringify(newData))
+        setData(newData);
+    }]
+}
 
 
+// object assertion
 
+export const isEmptyObj = (objToCheck) => Object.entries(objToCheck).length === 0 ? true : false

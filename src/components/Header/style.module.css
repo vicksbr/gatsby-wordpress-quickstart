@@ -1,0 +1,18 @@
+.headerContainer { 
+    background: orange;
+    margin-bottom: 1.45rem, 
+}
+
+.navMenu { 
+    text-align: right;
+    padding: 1.45rem 1.0875rem
+}   
+
+.navMenu .navLink:first-child {
+    float: left;
+  }
+
+.navLink { 
+    padding: 2px 4px;
+    color: black;
+}
