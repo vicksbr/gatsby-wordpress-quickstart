@@ -1,0 +1,129 @@
+Roteiro Treinamento Gatsby (30 minutos)
+
+
+1. Motivação 
+    
+    - Descentralizar conhecimento
+    - Solidificar aprendizado sobre desenvolvimento web
+    - Boilerplate pra rápido desenvolvimento
+
+    Aprender tecnologias modernas: docker, webpack, react, gatsby, restAPI, graphql, cloudfunctions
+    
+
+
+- Dificuldades quando eu embarquei em webdev     
+
+    "Eu não sabia sobre desenvolvimento web o tanto que eu achei que eu soubesse"
+    
+    Webdev: 
+    "Sites" 
+    Worpress (CMS) / PHP / AMP / CSS(alto nível de customização)/HTML/Javscript  
+    Exemplos: Blogs e sites
+    
+    Projetos: 
+        
+    uso forte de frameworks para rápido desenvolvimento
+    Aplicações WEB (não apenas mostrar conteúdo mas aplicações com lógica de negócio)
+    MEAN stack (mongo-express-angular-nodejs) -> (mongo-flask-react-python) 
+    Exemplos: ScriptWatcher / Account Analyzer
+
+
+2.  
+
+    SSR (nextJS)
+    CSR (create-react-app)
+    SSG (Gatsby)
+
+
+    LAMP - MEAN - JAMstack  
+    
+    headless CMS - (Wordpress RESTAPI possibilitou)
+    
+
+    Aplicação React - Custom Webpack
+    Aplicação React - Create React APP - Webpack pré configurado
+    Aplicação React - Gatsby - Webpack otimizado
+
+    LAMP: 
+        Server side rendering
+    
+    
+    JAMstack (API - Markup - Javascript): 
+        
+        API -> APIs replace back-end logic on a server.
+        
+        faster - no server rendering
+        more secure - security best practices delegated to APIs
+        cheaper - as expensive as it is to host static assets
+        a bit easier to develop
+
+
+3. Why learn
+
+    Gatsby:
+
+        Learn modern front-end technologies gradually.
+        Learn React in an easy way - no Webpack configurations necessary for starters.
+        Learn how to query GraphQL API servers.
+        Easy to extend.
+        Data: I love the idea of multiple unified data sources.
+        Prototyping: works well with typography.js.
+        Good DX.
+        
+        Can have literally any Admin UI.
+        
+        PWA on the fingertips. (plugins)
+           - Push Notification
+           - Ícone na tela home do smartphone
+           - Splash screen
+           - Processos rodando em background
+           - Suporte a funcionamento em modo Offline
+           - Acesso à camera e galeria
+           - Acesso à geolocalização
+           - Acesso à os contatos
+        
+        JavaScript everywhere - transferable skill.
+
+    GraphQL: 
+
+        Define data source
+        Prepare/transform the data
+        Querying the data with GraphQL
+        Place the result of the query within a React component
+        Display the information
+
+
+4. Apresentação boilerplate 
+
+    (Um site customizável, internacionalizado, com um bom SEO e um painel de admin)
+
+    - Montando o container:
+        phpmyadmin
+        wpcli pra gerenciar o wordpress - exemplos? 
+        wordpress
+        mysql 
+
+    - Wordpress:
+        arquitetura: https://www.cloudways.com/blog/wp-content/uploads/WordPress-Website-Flow.jpg
+        
+        menus - 
+        páginas customizadas (template+ACF) 
+        polylang 
+        yoast 
+        como criar uma nova página (template)
+
+
+    - Gatsby
+        arquitetura: https://kalinchernev.github.io/static/3cb438a221d72a2249066409532cb650/28b4c/gatsby-netlify-cover.png
+        
+        criação de páginas (pages API)
+        criação de páginas programada (createPage onCreatepage)
+        criação de componentes (src/components)
+
+    polylang(intercionalização) + yoast(SEO)
+
+
+5. O que falta
+
+    Documentação
+    Listar posts
