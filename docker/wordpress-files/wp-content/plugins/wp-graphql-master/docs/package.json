@@ -18,7 +18,7 @@
     "gatsby-plugin-sharp": "^2.2.32",
     "gatsby-theme-apollo-docs": "2.3.8",
     "gatsby-transformer-sharp": "^2.3.0",
-    "graphiql": "^0.17.5",
+    "graphiql": "^1.4.7",
     "react": "16.10.2",
     "react-dom": "16.10.2",
     "react-html-id": "^0.1.5",
