@@ -2,11 +2,7 @@
 node_modules/
 deploy.db
 public/
-wordpress/wp-admin
-wordpress/wp-includes
-wordpress/wp-content/themes/twentynineteen
-wordpress/wp-content/themes/twentyseventeen
-wordpress/wp-content/themes/twentysixteen
-wordpress/wp-content/themes/twentytwenty
-wordpress/wp-content/plugins
+wordpress/
+
+
 

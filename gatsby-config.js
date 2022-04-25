@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Raccoon Gatsby Wordpress Starter`,
+    title: `Gatsby Wordpress Starter`,
     description: `Boilerplate Gatsby+Wordpress.`,
     author: `Raccoon`,
   },
@@ -27,7 +27,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        baseUrl: "http://88b037f8a0d9.ngrok.io",
+        baseUrl: "http://localhost",
         protocol: "http",
         hostingWPCOM: false,
         useACF: true,

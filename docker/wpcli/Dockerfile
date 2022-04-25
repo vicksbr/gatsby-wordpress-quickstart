@@ -2,7 +2,7 @@ FROM wordpress:cli
 
 # Install make tool
 USER root
-RUN apk add --no-cache make
+RUN apk add make
 
 # Make docker-compose wait for container dependencies be ready
 # Add the wait script to the image

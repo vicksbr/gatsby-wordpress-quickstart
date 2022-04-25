@@ -6,4 +6,3 @@ Template Post Type: page
 */
 
 ?>
-

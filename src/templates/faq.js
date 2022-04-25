@@ -39,7 +39,6 @@ export const pageQuery = graphql`
         wordpressAcfPages(wordpress_id: {eq: $wordpress_id}) {
             acf {           
               faq_title
-              faq_questions { answer question }
             }
           }
     }
